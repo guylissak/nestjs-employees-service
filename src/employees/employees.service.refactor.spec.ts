@@ -6,7 +6,7 @@ import { EmployeesMockRepository } from './employees.mockRepository';
 describe('EmployeesService', () => {
   let service: EmployeesService;
 
-  beforeEach(async () => {
+  beforeAll(async () => {
     const module: TestingModule = await Test.createTestingModule({
       providers: [
         EmployeesService,

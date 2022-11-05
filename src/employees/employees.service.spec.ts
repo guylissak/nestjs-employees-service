@@ -8,7 +8,7 @@ import { IEmployeesRepository } from './interfaces/employeesRepository';
 describe('EmployeesService', () => {
   let service: EmployeesService;
 
-  beforeEach(async () => {
+  beforeAll(async () => {
     const module: TestingModule = await Test.createTestingModule({
       providers: [
         EmployeesService,
