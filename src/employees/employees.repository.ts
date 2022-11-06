@@ -14,7 +14,7 @@ export class EmployeesRepository implements IEmployeesRepository {
     return this.save(employee);
   }
 
-  findOne(email: string) {
+  findOne(email: string): Promise<Employee> {
     if (!email) {
       return null;
     }

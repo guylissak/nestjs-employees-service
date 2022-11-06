@@ -5,8 +5,8 @@ import { EmployeesService } from 'src/employees/employees.service';
 @Injectable()
 export class RolesGuard implements CanActivate {
   constructor(
-    private reflector: Reflector,
-    private employeesService: EmployeesService,
+    protected reflector: Reflector,
+    protected employeesService: EmployeesService,
   ) {}
 
   private matchRoles(roles: string[], userRole: string): boolean {
@@ -15,7 +15,6 @@ export class RolesGuard implements CanActivate {
 
   async canActivate(context: ExecutionContext): Promise<boolean> {
     const roles = this.reflector.get<string[]>('roles', context.getHandler());
-    console.log('roles', roles);
     if (!roles) {
       return true;
     }

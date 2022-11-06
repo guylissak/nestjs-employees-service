@@ -7,10 +7,7 @@ export class EmployeesService {
   constructor(private employeesRepository: IEmployeesRepository) {}
 
   async create(attrs: Partial<Employee>): Promise<Employee> {
-    console.log('CREATE');
-    const employee = await this.employeesRepository.create(attrs);
-
-    return this.employeesRepository.save(employee);
+    return await this.employeesRepository.create(attrs);
   }
 
   findOne(email: string) {

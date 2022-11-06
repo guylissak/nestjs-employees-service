@@ -15,17 +15,22 @@ import { CreateEmployeeDto } from './dtos/create-employee.dto';
 import { UpdateEmployeeDto } from './dtos/update-employee.dto';
 import { EmployeesService } from './employees.service';
 import { Roles } from 'src/decorators/roles.decorator';
+import { RestrictToUserGuard } from 'src/guards/restrictToUser.guard';
 
 @Controller('employees')
 export class EmployeesController {
   constructor(private employeesService: EmployeesService) {}
 
+  @UseGuards(RolesGuard)
+  @SetMetadata('roles', ['admin', 'superAdmin'])
   @Post('/new')
   async createEmployee(@Body() body: CreateEmployeeDto) {
     const employee = await this.employeesService.create(body);
     return employee;
   }
 
+  @UseGuards(RestrictToUserGuard)
+  @SetMetadata('roles', ['admin', 'superAdmin'])
   @Get('/:email')
   async findEmployee(@Param('email') email: string) {
     const employee = await this.employeesService.findOne(email);
@@ -43,7 +48,7 @@ export class EmployeesController {
   }
 
   @Patch('/:email')
-  @UseGuards(RolesGuard)
+  @UseGuards(RestrictToUserGuard)
   @SetMetadata('roles', ['admin', 'superAdmin'])
   async updateEmployee(
     @Param('email') email: string,

@@ -8,7 +8,7 @@ async function bootstrap() {
     res.removeHeader('x-powered-by');
     res.removeHeader('date');
     req.user = {
-      email: 'yifat.b@lusha.com',
+      email: 'guy.l@lusha.com',
     };
     next();
   });

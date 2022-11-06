@@ -7,11 +7,11 @@ POST http://localhost:3000/employees/new
 content-type: application/json
 
 {
-  "email": "yifat.br@lusha.com",
+  "email": "guy.l@lusha.com",
   "title": "full stack developer",
   "department": "R&D",
-  "salary": 50000,
-  "role": "admin"
+  "salary": 90004,
+  "role": "user"
 }
 
 
@@ -24,7 +24,7 @@ PATCH http://localhost:3000/employees/guy.l@lusha.com
 content-type: application/json
 
 {
-  "salary": 100000,
+  "salary": 10000,
   "role": "superAdmin"
 }
 
